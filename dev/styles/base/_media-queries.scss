@@ -1,0 +1,181 @@
+// media queries
+
+// (standart Bootsrap v3.3.7 definition)
+// Extra small screen / phone
+//** Deprecated `$screen-xs` as of v3.0.1
+$screen-xs-s: 320px;
+$screen-xs-m: 375px;
+$screen-xs-l: 425px;
+
+$screen-xs:                  480px;
+//** Deprecated `$screen-xs-min` as of v3.2.0
+$screen-xs-min:              $screen-xs;
+//** Deprecated `$screen-phone` as of v3.0.1
+$screen-phone:               $screen-xs-min;
+
+// Small screen / tablet
+//** Deprecated `$screen-sm` as of v3.0.1
+$screen-sm:                  768px;
+$screen-sm-min:              $screen-sm;
+//** Deprecated `$screen-tablet` as of v3.0.1
+$screen-tablet:              $screen-sm-min;
+
+// Medium screen / desktop
+//** Deprecated `$screen-md` as of v3.0.1
+$screen-md:                  992px;
+$screen-md-min:              $screen-md;
+//** Deprecated `$screen-desktop` as of v3.0.1
+$screen-desktop:             $screen-md-min;
+
+// Large screen / wide desktop
+//** Deprecated `$screen-lg` as of v3.0.1
+$screen-lg:                  1200px;
+$screen-lg-min:              $screen-lg;
+//** Deprecated `$screen-lg-desktop` as of v3.0.1
+$screen-lg-desktop:          $screen-lg-min;
+
+// So media queries don't overlap when required, provide a maximum
+$screen-xs-max:              ($screen-sm-min - 1);
+$screen-sm-max:              ($screen-md-min - 1);
+$screen-md-max:              ($screen-lg-min - 1);
+// how to use?
+// p {
+//     @include sm {
+//         font-size: 15px;
+//     }
+// }
+
+// Phones
+@mixin xs {
+    @media (max-width: #{$screen-xs-max}) {
+        @content;
+    }
+}
+
+@mixin xs-s {
+    @media (max-width: #{$screen-xs-s}) {
+        @content;
+    }
+}
+
+@mixin xs-m {
+    @media (max-width: #{$screen-xs-m}) {
+        @content;
+    }
+}
+
+@mixin xs-l {
+    @media (max-width: #{$screen-xs-l}) {
+        @content;
+    }
+}
+
+
+@mixin xs-max {
+    @media (max-width: #{$screen-xs}) {
+        @content;
+    }
+}
+
+
+@mixin xs-min {
+    @media (min-width: #{$screen-xs-max}) {
+        @content;
+    }
+}
+
+// Phone to Tablet
+@mixin xs-sm {
+    @media (min-width: #{$screen-xs}) and (max-width: #{$screen-sm}) {
+        @content;
+    }
+}
+
+// Tablets
+@mixin sm {
+    @media (max-width: #{$screen-sm-max}) {
+        @content;
+    }
+}
+
+@mixin sm-min {
+    @media (min-width: #{$screen-sm}) {
+        @content;
+    }
+}
+
+
+
+// Tablet to Desktop
+@mixin sm-md {
+    @media (min-width: #{$screen-sm}) and (max-width: #{$screen-md}) {
+        @content;
+    }
+}
+
+// Desktops
+@mixin md {
+    @media (max-width: #{$screen-md-max}) {
+        @content;
+    }
+}
+
+@mixin md-min {
+    @media (min-width: #{$screen-md}) {
+        @content;
+    }
+}
+
+// Desktop to Larger Desktop
+@mixin md-lg {
+    @media (min-width: #{$screen-md}) and (max-width: #{$screen-lg}) {
+        @content;
+    }
+}
+
+
+// Desktops
+@mixin lg {
+    @media (min-width: #{$screen-md-min}) {
+        @content;
+    }
+}
+
+@mixin lg-min {
+    @media (min-width: #{$screen-lg}) {
+        @content;
+    }
+}
+
+// Custom
+@mixin custom($custom-width) {
+   @media #{$custom-width} {
+       @content;
+   }
+}
+
+//Iphone X
+@mixin iphonex(){
+    @media only screen 
+    and (device-width : 375px) 
+    and (device-height : 812px) 
+    and (-webkit-device-pixel-ratio : 3) { 
+        @content;
+    }
+}
+
+//Iphone 5
+@mixin iphone5 {
+    @media (max-width: 375px) {
+        @content;
+    }
+}
+
+//Phone Horizontal
+@mixin phoneHor(){
+    @media only screen 
+    and (min-width : 568px) 
+    and (max-width : 768px) { 
+        @content;
+    }
+}
